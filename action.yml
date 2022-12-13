@@ -1,0 +1,21 @@
+name: 'PR Slack notification'
+description: 'Send a Slack Notification related to a PR.'
+inputs:
+  slack-pr-incoming-webhook:
+    description: >
+      Slack Incoming webhook.
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        MSG_MINIMAL: true
+        SLACK_COLOR: good
+        SLACK_WEBHOOK: ${{ inputs.slack-pr-incoming-webhook }}
+        SLACK_USERNAME: ${{ github.repository }}
+        SLACK_TITLE: "new PR : ${{ github.event.pull_request.title }}"
+        SLACK_MESSAGE: "Commit : <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|${{ github.event.pull_request.head.sha }}>"
+        SLACK_ICON: ''
+        SLACK_FOOTER: ''
