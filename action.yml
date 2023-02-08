@@ -15,7 +15,7 @@ runs:
         SLACK_COLOR: good
         SLACK_WEBHOOK: ${{ inputs.slack-pr-incoming-webhook }}
         SLACK_USERNAME: ${{ github.repository }}
-        SLACK_TITLE: "new PR : ${{ github.event.pull_request.title }}"
-        SLACK_MESSAGE: "Pull Request: <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}> \nCommit: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|${{ github.event.pull_request.head.sha }}>"
+        SLACK_TITLE: "New PR : ${{ github.event.pull_request.title }}"
+        SLACK_MESSAGE: "Pull Request: <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>"
         SLACK_ICON: ''
         SLACK_FOOTER: ''
